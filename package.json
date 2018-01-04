@@ -1,0 +1,51 @@
+{
+  "name": "@justeat/f-templates",
+  "description": "Locate, compile, and serve HTML from templates.",
+  "version": "0.0.1",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/justeat/f-templates",
+  "contributors": [
+    "Github contributors <https://github.com/justeat/f-templates/graphs/contributors>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:justeat/f-templates.git"
+  },
+  "bugs": {
+    "url": "https://github.com/justeat/f-templates/issues"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "glob": "^7.1.2",
+    "handlebars": "^4.0.11"
+  },
+  "devDependencies": {
+    "@justeat/eslint-config-fozzie": "^1.2.0",
+    "babel-cli": "^6.26.0",
+    "babel-minify": "^0.2.0",
+    "babel-preset-env": "^1.6.1",
+    "concurrently": "^3.5.1",
+    "eslint": "^4.8.0",
+    "eslint-plugin-import": "^2.7.0"
+  },
+  "keywords": [
+    "fozzie"
+  ],
+  "scripts": {
+    "prepare": "concurrently --names \"lint,compile\" --prefix-colors \"blue,yellow\" --kill-others-on-fail \"yarn lint\" \"yarn compile\"",
+    "lint": "eslint {src,test}/**/*.js",
+    "compile": "babel -d dist src"
+  },
+  "assets": {
+    "root": "dist/",
+    "glob": "templates.js"
+  },
+  "browserslist": [
+    "node 4.0.0"
+  ]
+}
