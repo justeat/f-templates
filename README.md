@@ -20,7 +20,7 @@ Add the module to your dependencies
 yarn add @justeat/f-templates
 ```
 
-Once the module has been copied into your project (via the [gulp-build-fozzie `copy:assets`](https://github.com/justeat/gulp-build-fozzie#copyassets) task) you can require and call it like so:
+Once the module has been copied into your project (via the [gulp-build-fozzie `copy:assets`](https://github.com/justeat/gulp-build-fozzie#copyassets) task) you can use it in the following ways.
 
 ### Node
 
@@ -34,13 +34,13 @@ const html = compileTemplate(callback, moduleName, options);
 
 ### .Net Core
 
-If you are using the [NodeServices NuGet package](https://github.com/aspnet/JavaScriptServices/tree/dev/src/Microsoft.AspNetCore.NodeServices#microsoftaspnetcorenodeservices) then you
+If you are using the [NodeServices NuGet package](https://github.com/aspnet/JavaScriptServices/tree/dev/src/Microsoft.AspNetCore.NodeServices#microsoftaspnetcorenodeservices) then you can call it like this:
 
 ```csharp
 public async Task<IActionResult> MyAction([FromServices] INodeServices nodeServices)
 {
     var result = await nodeServices.InvokeAsync<string>("./templates", templateName, options);
-    return new HtmlString(rawTemplate);
+    return new HtmlString(result);
 }
 ```
 
