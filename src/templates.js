@@ -27,7 +27,7 @@ const loadPartials = templatePath => {
 };
 
 
-module.exports = (callback, moduleName, options) => {
+module.exports = (callback, moduleName, language, options) => {
     const globPattern = '**/templates';
     const ignore = '**/node_modules/**';
     const globOptions = { ignore };
@@ -49,7 +49,7 @@ module.exports = (callback, moduleName, options) => {
         const rawTranslations = fs.readFileSync(translationsPath, 'utf-8');
         const translations = JSON.parse(rawTranslations);
 
-        const opts = Object.assign({}, translations, options);
+        const opts = Object.assign({ language }, translations, options);
 
         callback(null, template(opts));
     });
