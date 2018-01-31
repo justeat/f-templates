@@ -1,7 +1,7 @@
 {
   "name": "@justeat/f-templates",
   "description": "Locate, compile, and serve HTML from templates.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "files": [
     "dist"
   ],
@@ -42,10 +42,13 @@
     "lint": "eslint {src,test}/**/*.js",
     "compile": "babel -d dist src"
   },
-  "assets": {
-    "root": "dist/",
-    "glob": "templates.js"
-  },
+  "assets": [
+    {
+      "root": "dist/",
+      "glob": "templates.js",
+      "dest": "./templates"
+    }
+  ],
   "browserslist": [
     "node 4.0.0"
   ]
