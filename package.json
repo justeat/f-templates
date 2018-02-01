@@ -1,7 +1,7 @@
 {
   "name": "@justeat/f-templates",
   "description": "Locate, compile, and serve HTML from templates.",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "files": [
     "dist"
   ],
@@ -26,21 +26,22 @@
     "handlebars-helper-i18n": "^0.1.0"
   },
   "devDependencies": {
-    "@justeat/eslint-config-fozzie": "^1.2.0",
-    "babel-cli": "^6.26.0",
-    "babel-minify": "^0.2.0",
+    "@justeat/eslint-config-fozzie": "^1.4.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "concurrently": "^3.5.1",
-    "eslint": "^4.8.0",
-    "eslint-plugin-import": "^2.7.0"
+    "eslint": "^4.16.0",
+    "eslint-plugin-import": "^2.8.0",
+    "webpack": "^3.10.0"
   },
   "keywords": [
     "fozzie"
   ],
   "scripts": {
     "prepare": "concurrently --names \"lint,compile\" --prefix-colors \"blue,yellow\" --kill-others-on-fail \"yarn lint\" \"yarn compile\"",
-    "lint": "eslint {src,test}/**/*.js",
-    "compile": "babel -d dist src"
+    "lint": "eslint src/**/*.js",
+    "compile": "webpack"
   },
   "assets": [
     {
@@ -50,6 +51,6 @@
     }
   ],
   "browserslist": [
-    "node 4.0.0"
+    "node 4.0"
   ]
 }

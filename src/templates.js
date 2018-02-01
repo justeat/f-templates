@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+
 const fs = require('fs');
 const path = require('path');
 const handlebars = require('handlebars');
@@ -26,8 +28,7 @@ const loadPartials = templatePath => {
     });
 };
 
-
-module.exports = (callback, moduleName, language, options) => {
+const getTemplate = (callback, moduleName, language, options) => {
     const globPattern = '**/templates';
     const ignore = '**/node_modules/**';
     const globOptions = { ignore };
@@ -53,4 +54,8 @@ module.exports = (callback, moduleName, language, options) => {
 
         callback(null, template(opts));
     });
+};
+
+export {
+    getTemplate
 };
