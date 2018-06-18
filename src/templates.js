@@ -38,21 +38,25 @@ const getTemplate = (callback, moduleName, language, options) => {
             callback(err);
         }
 
-        // /path/to/module/{moduleName}/index.hbs
-        const templatePath = path.resolve(process.cwd(), result, moduleName);
-        const rawTemplate = fs.readFileSync(`${templatePath}/index.hbs`, 'utf-8');
-        const template = handlebars.compile(rawTemplate);
+        try {
+            // /path/to/module/{moduleName}/index.hbs
+            const templatePath = path.resolve(process.cwd(), result, moduleName);
+            const rawTemplate = fs.readFileSync(`${templatePath}/index.hbs`, 'utf-8');
+            const template = handlebars.compile(rawTemplate);
 
-        loadPartials(templatePath);
+            loadPartials(templatePath);
 
-        // /path/to/module/{moduleName}/resources/{moduleName}.json
-        const translationsPath = path.resolve(process.cwd(), result, `resources/${moduleName}.json`);
-        const rawTranslations = fs.readFileSync(translationsPath, 'utf-8');
-        const translations = JSON.parse(rawTranslations);
+            // /path/to/module/{moduleName}/resources/{moduleName}.json
+            const translationsPath = path.resolve(process.cwd(), result, `resources/${moduleName}.json`);
+            const rawTranslations = fs.readFileSync(translationsPath, 'utf-8');
+            const translations = JSON.parse(rawTranslations);
 
-        const opts = Object.assign({ language }, translations, options);
+            const opts = Object.assign({ language }, translations, options);
 
-        callback(null, template(opts));
+            callback(null, template(opts));
+        } catch (ex) {
+            callback(ex);
+        }
     });
 };
 

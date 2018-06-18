@@ -27,9 +27,9 @@ Once the module has been copied into your project (via the [gulp-build-fozzie `c
 Require and call the imported module:
 
 ```js
-const compileTemplate = require('./templates');
+const templates = require('./templates');
 
-const html = compileTemplate(callback, moduleName, options);
+const html = templates.getTemplate(callback, moduleName, language, options);
 ```
 
 ### .Net Core
@@ -39,7 +39,7 @@ If you are using the [NodeServices NuGet package](https://github.com/aspnet/Java
 ```csharp
 public async Task<IActionResult> MyAction([FromServices] INodeServices nodeServices)
 {
-    var result = await nodeServices.InvokeAsync<string>("./templates", templateName, options);
+    var result = await nodeServices.InvokeExportAsync<string>("./templates", getTemplate, templateName, language, options);
     return new HtmlString(result);
 }
 ```
@@ -49,5 +49,7 @@ public async Task<IActionResult> MyAction([FromServices] INodeServices nodeServi
 - `callback` is a function which should be called upon completion. This is not required when using NodeServices in .Net Core.
 
 - `moduleName` is the name of the template file which you would should be used to generate the HTML.
+
+- `language` is a string containing the country code for the language you'd like the templates to compile with e.g. "fr-CA" for French Canadian.
 
 - `options` is an optional parameter in which you can pass parameters which will be used in the template.
