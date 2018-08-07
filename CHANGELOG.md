@@ -4,6 +4,27 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+v1.2.0
+------------------------------
+*August 9, 2018*
+
+### Added
+- Added Babel object rest spread transform.
+- Added danger module and checks.
+
+### Changed
+- Updated dependencies.
+- Webpack updated and build modified to output production code.
+- Small refactor of the templates module.
+- Tpdated Travis config.
+
+### Removed
+- Removed badges for deprecated and unused services.
+
+### Fixed
+- Fixed linting issues.
+
+
 v1.1.0
 ------------------------------
 *June 18, 2018*

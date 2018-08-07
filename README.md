@@ -2,8 +2,6 @@
 
 [![npm version](https://badge.fury.io/js/%40justeat%2Ff-templates.svg)](https://badge.fury.io/js/%40justeat%2Ff-templates)
 [![Build Status](https://travis-ci.org/justeat/f-templates.svg)](https://travis-ci.org/justeat/f-templates)
-[![Coverage Status](https://coveralls.io/repos/github/justeat/f-templates/badge.svg)](https://coveralls.io/github/justeat/f-templates)
-[![Dependency Status](https://gemnasium.com/badges/github.com/justeat/f-templates.svg)](https://gemnasium.com/github.com/justeat/f-templates)
 
 
 ## About

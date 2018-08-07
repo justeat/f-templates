@@ -1,7 +1,7 @@
 {
   "name": "@justeat/f-templates",
   "description": "Locate, compile, and serve HTML from templates.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "files": [
     "dist"
   ],
@@ -21,19 +21,22 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "glob": "^7.1.2",
-    "handlebars": "^4.0.11",
-    "handlebars-helper-i18n": "^0.1.0"
+    "glob": "7.1.2",
+    "handlebars": "4.0.11",
+    "handlebars-helper-i18n": "0.1.0"
   },
   "devDependencies": {
-    "@justeat/eslint-config-fozzie": "^1.4.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "concurrently": "^3.5.1",
-    "eslint": "^4.16.0",
-    "eslint-plugin-import": "^2.8.0",
-    "webpack": "^3.10.0"
+    "@justeat/eslint-config-fozzie": "2.0.1",
+    "babel-core": "6.26.3",
+    "babel-loader": "7.1.5",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "concurrently": "3.6.1",
+    "danger": "3.8.4",
+    "eslint": "5.3.0",
+    "eslint-plugin-import": "2.13.0",
+    "webpack": "4.16.5",
+    "webpack-cli": "3.1.0"
   },
   "keywords": [
     "fozzie"
@@ -41,7 +44,8 @@
   "scripts": {
     "prepare": "concurrently --names \"lint,compile\" --prefix-colors \"blue,yellow\" --kill-others-on-fail \"yarn lint\" \"yarn compile\"",
     "lint": "eslint src/**/*.js",
-    "compile": "webpack"
+    "compile": "webpack --mode production",
+    "test": "echo there are no tests at the moment"
   },
   "assets": [
     {

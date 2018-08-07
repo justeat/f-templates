@@ -12,7 +12,7 @@ module.exports = {
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 exclude: /node_modules/,
                 test: /\.js$/,
