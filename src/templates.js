@@ -6,9 +6,6 @@ const handlebars = require('handlebars');
 const { i18n } = require('handlebars-helper-i18n');
 const glob = require('glob');
 
-handlebars.registerHelper('i18n', i18n);
-
-
 const loadPartials = templatePath => {
     // /path/to/module/{moduleName}/partials/*.hbs
     const partialsDir = path.resolve(templatePath, 'partials');
@@ -21,7 +18,8 @@ const loadPartials = templatePath => {
             return;
         }
 
-        const name = matches[1]; // eslint-disable-line prefer-destructuring
+        // Array destructuring, taking the second item and assigning it to the `name` variable.
+        const [, name] = matches;
         const template = fs.readFileSync(`${partialsDir}/${filename}`, 'utf8');
 
         handlebars.registerPartial(name, template);
@@ -33,6 +31,8 @@ const getTemplate = (callback, moduleName, language, options) => {
     const ignore = '**/node_modules/**';
     const globOptions = { ignore };
 
+    handlebars.registerHelper('i18n', i18n);
+
     glob(globPattern, globOptions, (err, [result]) => {
         if (err) {
             callback(err);
@@ -41,19 +41,21 @@ const getTemplate = (callback, moduleName, language, options) => {
         try {
             // /path/to/module/{moduleName}/index.hbs
             const templatePath = path.resolve(process.cwd(), result, moduleName);
-            const rawTemplate = fs.readFileSync(`${templatePath}/index.hbs`, 'utf-8');
-            const template = handlebars.compile(rawTemplate);
 
             loadPartials(templatePath);
+
+            const rawTemplate = fs.readFileSync(`${templatePath}/index.hbs`, 'utf-8');
+            const template = handlebars.compile(rawTemplate);
 
             // /path/to/module/{moduleName}/resources/{moduleName}.json
             const translationsPath = path.resolve(process.cwd(), result, `resources/${moduleName}.json`);
             const rawTranslations = fs.readFileSync(translationsPath, 'utf-8');
             const translations = JSON.parse(rawTranslations);
 
-            const opts = Object.assign({ language }, translations, options);
+            const opts = { language, ...translations, ...options };
+            const compiled = template(opts);
 
-            callback(null, template(opts));
+            callback(null, compiled);
         } catch (ex) {
             callback(ex);
         }
