@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const handlebars = require('handlebars');
 const { i18n } = require('handlebars-helper-i18n');
+const { inlineSVG } = require('handlebars-helper-inlinesvg');
 const glob = require('glob');
 
 const loadPartials = templatePath => {
@@ -32,6 +33,7 @@ const getTemplate = (callback, moduleName, language, options) => {
     const globOptions = { ignore };
 
     handlebars.registerHelper('i18n', i18n);
+    handlebars.registerHelper('inlineSVG', inlineSVG);
 
     glob(globPattern, globOptions, (err, [result]) => {
         if (err) {
