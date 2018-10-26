@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 v1.3.0
 ------------------------------
+*October 26, 2018*
+
+### Added
+- `concat` handlebars helper added to project
+
+
+v1.3.0
+------------------------------
 *August 10, 2018*
 
 ### Added

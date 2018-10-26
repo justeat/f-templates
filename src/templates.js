@@ -34,6 +34,7 @@ const getTemplate = (callback, moduleName, language, options) => {
 
     handlebars.registerHelper('i18n', i18n);
     handlebars.registerHelper('inlineSVG', inlineSVG);
+    handlebars.registerHelper('concat', (...args) => args.slice(0, -1).join(''));
 
     glob(globPattern, globOptions, (err, [result]) => {
         if (err) {
