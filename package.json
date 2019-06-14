@@ -1,7 +1,7 @@
 {
   "name": "@justeat/f-templates",
   "description": "Locate, compile, and serve HTML from templates.",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "files": [
     "dist"
   ],
