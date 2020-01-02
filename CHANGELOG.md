@@ -10,6 +10,9 @@ v1.5.2
 ### Fixed
 - Security update (handlebars)
 
+### Changed
+- Travis Node version updated
+
 
 v1.5.1
 ------------------------------
