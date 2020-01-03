@@ -1,7 +1,7 @@
 {
   "name": "@justeat/f-templates",
   "description": "Locate, compile, and serve HTML from templates.",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "files": [
     "dist"
   ],
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "glob": "7.1.4",
-    "handlebars": "4.1.2",
+    "handlebars": "4.3.0",
     "handlebars-helper-i18n": "0.1.0",
     "handlebars-helper-inlinesvg": "1.0.4"
   },
